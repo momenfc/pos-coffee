@@ -28,6 +28,7 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.22",
     "pug": "^3.0.2"
   }
 }
