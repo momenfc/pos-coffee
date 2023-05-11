@@ -1,0 +1,233 @@
+.glo-form-style {
+  // padding: 2.8rem 0;
+  // width: 47.8rem;
+  max-width: 100%;
+  // margin: auto;
+
+  // &.fw {
+  //   width: 100%;
+  // }
+
+  .ant-form {
+    // padding: 3.4rem 0;
+
+  }
+
+  .ant-form-item {
+    .ant-form-item-label {
+      font-size: 1.4rem;
+      // line-height: 2.5;
+      // text-align: right;
+      // letter-spacing: 0;
+      color: #242424;
+    }
+  }
+
+  button.form-submit {
+    min-height: 4.5rem;
+
+    span {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  .ant-input-prefix {
+    margin-left: 1rem;
+  }
+
+  input,
+  .ant-picker {
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    // background: transparent;
+    box-shadow: none !important;
+    // border: none !important;
+    border-radius: 5px;
+    resize: none;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+
+    // 
+    font-size: 1.4rem;
+    // font-weight: bold;
+    // line-height: 1.24;
+    // letter-spacing: 1px;
+    color: #777;
+
+    &::placeholder {
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.5;
+      // letter-spacing: -0.408px;
+      color: #777;
+    }
+  }
+
+  .ant-input-affix-wrapper {
+    width: 100%;
+    height: 4.5rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+
+
+
+    input {
+      height: 100%;
+    }
+  }
+
+  .ant-select {
+    width: 100%;
+
+    .ant-select-arrow {
+      // right: auto;
+      // left: 1.1rem;
+      font-size: 1rem;
+      color: #242424;
+    }
+
+    .ant-select-selector {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      height: 4.5rem;
+
+      input {
+        height: 100% !important;
+        // 
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1.24;
+        // letter-spacing: 1px;
+        color: #242424;
+      }
+
+      .ant-select-selection-placeholder {
+        // display: contents;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        // letter-spacing: -0.408px;
+        color: #777;
+      }
+
+      .ant-select-selection-item {
+        display: contents;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        letter-spacing: -0.408px;
+      }
+    }
+
+  }
+
+  .ant-checkbox-wrapper {
+    font-size: 1.6rem;
+    color: #242424;
+  }
+
+  // textarea {
+  //   padding: 1rem;
+  //   resize: none;
+  //   border-radius: 5px;
+  //   position: relative !important;
+
+  //   // 
+  //   font-size: 1.6rem;
+  //   font-weight: bold;
+  //   line-height: 1.24;
+  //   // letter-spacing: 1px;
+  //   color: #242424;
+
+  //   &::placeholder {
+  //     font-weight: 400;
+  //     font-size: 1.6rem;
+  //     line-height: 1.5;
+  //     letter-spacing: -0.408px;
+  //     color: rgba(0, 0, 0, 0.62);
+
+  //   }
+  // }
+
+  // .ant-input-textarea {
+  //   position: relative;
+
+  //   &::after {
+  //     content: +'sdsd';
+  //     margin: 0;
+  //     position: absolute;
+  //     bottom: 1rem;
+  //     left: 5rem;
+  //   }
+
+  //   &::before {
+  //     content: "حرف";
+  //     position: absolute;
+  //     bottom: 1rem;
+  //     left: 1rem;
+  //     font-size: 1.7rem;
+  //     color: rgba(0, 0, 0, 0.45);
+  //     z-index: 2;
+
+  //   }
+  // }
+
+  // &.label-indent {
+  //   .ant-form-item .ant-form-item-label {
+  //     text-indent: 1.5rem;
+  //   }
+  // }
+}
+
+.style {
+  &.select {
+    width: 100%;
+
+    .ant-select-arrow {
+      // right: auto;
+      // left: 1.1rem;
+      font-size: 1rem;
+      color: #242424;
+    }
+
+    .ant-select-selector {
+      display: flex;
+      align-items: center;
+      // justify-content: center;
+      height: 4.5rem;
+
+      input {
+        height: 100% !important;
+        // 
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1.24;
+        // letter-spacing: 1px;
+        color: #242424;
+      }
+
+      .ant-select-selection-placeholder {
+        // display: contents;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        // letter-spacing: -0.408px;
+        color: #777;
+      }
+
+      .ant-select-selection-item {
+        display: contents;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        letter-spacing: -0.408px;
+        color: #242424;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,145 @@
+// @font-face {
+//   font-family: 'arthead';
+//   src: url('../assets/fonts/arthead/Arthead-Regular.otf') format('OpenType');
+// }
+
+// @font-face {
+//   font-family: 'dream orphans';
+//   src: url('../assets/fonts/dream-orphans/dream-orphans.otf') format('OpenType');
+//   font-weight: 400;
+// }
+
+// @font-face {
+//   font-family: 'dream orphans';
+//   src: url('../assets/fonts/dream-orphans/dream-orphans\ bd.otf') format('OpenType');
+//   font-weight: 700;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: $font-primary ;
+}
+
+html {
+    font-size: 48%;
+
+    @include mq('xs') {
+        font-size: 52%;
+    }
+
+    @include mq('sm') {
+        font-size: 55%;
+    }
+
+    @include mq('md') {
+        font-size: 57%;
+    }
+
+    @include mq('lg') {
+        font-size: 60%;
+    }
+
+    @include mq('xl') {
+        font-size: 62.5%;
+    }
+
+    @include mq('xxl') {
+        font-size: 68%;
+    }
+}
+
+body {
+    font-family: $font-primary;
+    overflow-x: hidden;
+    // font-size: 1.6rem;
+    // color: #242424;
+    // line-height: normal;
+    // scroll-behavior: smooth;
+    // background-color: #e2e2e2;
+    // color: #e6c01a;
+    // min-height: 180vh;
+}
+
+// .container {
+//     margin-left: auto !important;
+//     margin-right: auto !important;
+//     overflow-x: clip !important;
+
+//     &.over-visible {
+//         overflow-x: visible !important;
+//     }
+
+
+//     @include mq("md", max) {
+//         width: 100%;
+//         padding: 0 1rem;
+//     }
+
+//     @include mq("md") {
+//         width: 723px;
+//     }
+
+//     @include mq("lg") {
+//         width: 933px;
+//     }
+
+//     @include mq("xl") {
+//         width: 1127px;
+//         width: 1165px; // custom
+//     }
+
+//     @include mq("xxl") {
+//         width: 1427px;
+//     }
+// }
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: clip;
+    max-width: 100% !important;
+
+    &.over-visible {
+        overflow-x: visible;
+    }
+
+    @include mq("md", max) {
+        width: 100%;
+        // padding: 0 1rem;
+    }
+
+    @include mq("md") {
+        width: 723px;
+    }
+
+    @include mq("lg") {
+        width: 933px;
+        width: 960px; // custom
+    }
+
+    @include mq("xl") {
+        width: 1127px;
+        width: 1190px; // custom
+    }
+
+    @include mq("xxl") {
+        width: 1427px;
+    }
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include mq("sm", max) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

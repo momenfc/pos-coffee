@@ -1,0 +1,76 @@
+/************ VARIABLES ********************/
+// FONTS
+$rest-fonts: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+  Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+// 
+$font-primary: "Tajawal", $rest-fonts;
+$font-display: "Cairo", $rest-fonts;
+$font-display-2: "Montserrat", $rest-fonts;
+
+// COLORS
+$color-1: #FF9494;
+$color-2: #FFD1D1;
+$color-3: #FFE3E1;
+$color-4: #FFF5E4;
+
+
+
+// STYLES
+$shadow: 0px 1.5rem 3rem 0px rgba(0, 0, 0, 0.75);
+// box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+// &:hover {
+//   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+// }
+// border-bottom: 1px solid rgba(0, 0, 0, 0.105);
+/************MEDIA QUERY ********************/
+$breakpoints: (
+  "xs": 480px,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1600px,
+);
+
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+
+    @if $type==max {
+      $width: $width - 1px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+/*****************prfix*************/
+@mixin prefixer($property, $val) {
+  #{$property}: $val;
+  -webkit-#{$property}: $val;
+  -moz-#{$property}: $val;
+  -ms-#{$property}: $val;
+  -o-#{$property}: $val;
+}
+
+/*****************input placeholder*************/
+@mixin input-placeholder {
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}

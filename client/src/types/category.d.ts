@@ -1,0 +1,3 @@
+interface CategoryState {
+  list: string[];
+}
