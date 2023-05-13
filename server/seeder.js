@@ -4,6 +4,9 @@ const Product = require('./models/productModal');
 const productsData = require('./data/products');
 const Stock = require('./models/stockModal');
 const stockData = require('./data/stock');
+const userData = require('./data/users');
+console.log('userData:', userData);
+const User = require('./models/userModel');
 
 //
 dotenv.config();
@@ -15,10 +18,11 @@ const importData = async () => {
     // await Product.insertMany(productsData);
     // console.log('Products data reset successfuly');
 
-    console.log('Stock data reset ...');
-    await Stock.deleteMany();
-    await Stock.insertMany(stockData);
-    console.log('Stock data reset successfuly');
+    await User.deleteMany();
+    const users = await User.insertMany(userData);
+    console.log('importData  users:', users);
+    // await Stock.deleteMany();
+    // await Stock.insertMany(stockData);
 
     process.exit();
   } catch (error) {

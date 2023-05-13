@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
@@ -24,6 +23,7 @@ exports.update = catchAsync(async (req, res, next) => {
     return next(new AppError('Token is invalid or has expired', 400));
   }
 
+  user.password = undefined;
   res.status(201).json({
     status: 'success',
     data: {
@@ -65,6 +65,8 @@ exports.roleUpdate = catchAsync(async (req, res, next) => {
     return next(new AppError('userId is invalid', 404));
   }
 
+  user.password = undefined;
+
   res.status(201).json({
     status: 'success',
     data: {
@@ -75,5 +77,30 @@ exports.roleUpdate = catchAsync(async (req, res, next) => {
 
 exports.getAll = factory.getAll(User);
 exports.getOne = factory.getOne(User);
-exports.updateOne = factory.updateOne(User);
+exports.addOne = factory.addOne(User);
 exports.deleteOne = factory.deleteOne(User);
+
+exports.updateOne = catchAsync(async (req, res, next) => {
+  const data = {
+    ...req.body,
+  };
+  if (req.body?.isResetPassword) {
+    data.password = '123456';
+  }
+  const user = await User.findByIdAndUpdate(req.params.id, data, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!user) return next(new AppError('No user found with that ID', 404));
+
+  user.password = undefined;
+
+  res.status(201).json({
+    code: 201,
+    status: 'succes',
+    data: {
+      data: user,
+    },
+  });
+});

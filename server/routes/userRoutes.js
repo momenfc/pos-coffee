@@ -4,10 +4,10 @@ const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/register', authController.register);
+// router.post('/register', authController.register);
 router.post('/login', authController.login);
-router.post('/forget-password', authController.forgetPassword);
-router.post('/reset-password', authController.resetPassword);
+// router.post('/forget-password', authController.forgetPassword);
+// router.post('/reset-password', authController.resetPassword);
 
 //? ACTIVE FOR LOGIN USERS
 router.use(authController.protect);
@@ -19,6 +19,7 @@ router.route('/').patch(userController.update).delete(userController.delete);
 router.use(authController.restrictTo('admin'));
 router.patch('/role-update', userController.roleUpdate);
 router.get('/', userController.getAll);
+router.post('/', userController.addOne);
 router
   .route('/:id')
   .get(userController.getOne)
