@@ -1,17 +1,23 @@
-import { Button, Col, Dropdown, Layout, Popover, Row, Space } from 'antd';
-import { Link } from 'react-router-dom';
-import logo from 'assets/images/logo.png';
-import coffeSpilled from 'assets/images/coffee beans and spilled coffee.png';
-import { BarsOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Col, Dropdown, Layout, Row } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+  DashboardOutlined,
+  LogoutOutlined,
+  PrinterOutlined,
+  SafetyCertificateOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
 import { useAppDispatch, useAppSelector } from 'services/store/configureStore';
 import { generalDataUpdate } from 'services/store/reducers/generalData';
 import { useState } from 'react';
 import OwnModal from 'components/modals/OwnModal';
 import useAuth from 'api-hooks/auth/useAuth';
+import constants from 'consts';
 
 const { Header } = Layout;
 
 function OwnHeader() {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userData = useAppSelector(s => s.user.data);
   const lastOrder = useAppSelector(s => s.generalData.lastOrder);
@@ -29,8 +35,22 @@ function OwnHeader() {
           <Col>
             {userData && (
               <Dropdown
+                trigger={['click']}
                 menu={{
                   items: [
+                    {
+                      key: '/dashboard',
+                      label: 'Dashboard',
+                      icon: <DashboardOutlined />,
+                      onClick: ({ key }) => navigate(key),
+                      disabled: userData?.role !== 'admin',
+                    },
+                    {
+                      key: '/update-password',
+                      label: 'Update Password',
+                      icon: <SafetyCertificateOutlined />,
+                      onClick: ({ key }) => navigate(key),
+                    },
                     {
                       key: 'Logout',
                       label: 'Logout',
@@ -54,17 +74,34 @@ function OwnHeader() {
           </Col>
           <Col>
             <Link to="/">
-              <img src={logo} alt="Brand" className="h-14" />
+              <img src={constants.logo} alt="Brand" className="h-14" />
             </Link>
           </Col>
           <Col>
-            <Popover
+            {!!lastOrder && (
+              <Button
+                type="primary"
+                ghost
+                className="flex items-center capitalize"
+                icon={<PrinterOutlined />}
+                onClick={() =>
+                  dispatch(generalDataUpdate({ isOrderToCopy: true }))
+                }
+              >
+                Last order
+              </Button>
+            )}
+            {/* <Popover
               trigger="click"
               placement="bottomRight"
               content={
                 <Space direction="vertical" style={{ width: 220 }}>
-                  <Link to="/dashboard">dashboard</Link>
-                  <Link to="/orders">orders</Link>
+                  {userData?.role === 'admin' && (
+                    <Link to="/dashboard">dashboard</Link>
+                  )}
+                  {userData?.role !== 'user' && (
+                    <Link to="/orders">orders</Link>
+                  )}
                   {!!lastOrder && (
                     <Button
                       type="link"
@@ -83,13 +120,17 @@ function OwnHeader() {
                 type="link"
                 icon={<BarsOutlined style={{ fontSize: 24 }} />}
               />
-            </Popover>
+            </Popover> */}
           </Col>
         </Row>
       </Header>
       <OwnModal open={isLogoutMod} onCancel={closeLogoutMod} title="Logout">
         <div className="flex flex-col gap-8 items-center">
-          <img src={coffeSpilled} alt="coffe Spilled" className="w-1/2" />
+          <img
+            src={constants.logoutLogo}
+            alt="coffe Spilled"
+            className="w-1/2"
+          />
           <div className="space-y-6">
             <h2 className="text-xl font-medium">
               Are you sure you want to logout?

@@ -1,5 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
+import { Link } from 'react-router-dom';
 import useAuth from 'api-hooks/auth/useAuth';
 import AuthFrame from './AuthFrame';
 
@@ -14,15 +15,15 @@ function Login() {
     <AuthFrame title="Login to your account">
       <Form onFinish={handleLogin} className="global-form" size="large">
         <FormItem
-          name="name"
+          name="email"
           rules={[
             {
               required: true,
-              message: 'Please enter your name',
+              message: 'Please enter your email',
             },
           ]}
         >
-          <Input placeholder="Enter Name" className="global-input" />
+          <Input placeholder="Enter Email" className="global-input" />
         </FormItem>
         <FormItem
           name="password"
@@ -48,6 +49,17 @@ function Login() {
           Login
         </Button>
       </Form>
+      <div className="py-4 text-end">
+        Or{' '}
+        <Link to="/register" className="text-blue-500">
+          register now!
+        </Link>
+      </div>
+      <div className="text-">
+        <Link to="/enter-email/forget-pawword" className="text-slate-400">
+          Foret password!
+        </Link>
+      </div>
     </AuthFrame>
   );
 }

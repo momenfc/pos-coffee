@@ -11,9 +11,13 @@ function useOrderDetails(orderId?: string) {
     return res;
   };
 
-  const { data, isLoading } = useQuery([queryKeys.orderDetails], http, {
-    onSuccess: undefined,
-  });
+  const { data, isLoading } = useQuery(
+    [queryKeys.orderDetails, orderId],
+    http,
+    {
+      onSuccess: undefined,
+    }
+  );
 
   const orderDetails: OrderItem = data?.data?.data;
 

@@ -1,19 +1,24 @@
-import { Input, Table } from 'antd';
+import { AppstoreAddOutlined, UserAddOutlined } from '@ant-design/icons';
+import { Button, Input, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import useUserList from 'api-hooks/user/useUserList';
+import DrawerUser from 'components/admin/Drawer/DrawerUser';
 import { useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import Actions from './table-cells/Actions';
-import Role from './table-cells/Role';
 
 function Staff() {
   const [searchText, setSearchText] = useState<string>('');
+  const [isDrawerUserOpen, setIsDrawerUserOpen] = useState(false);
 
   const { userList, userListLod } = useUserList();
   console.log('Staff  userList:', userList);
 
-  const userListFilterd = searchText
-    ? userList?.filter((user: User) => {
+  // Remove admin
+  const StaffList = userList?.filter((user: User) => user.name !== 'admin');
+
+  const staffListFilterd = searchText
+    ? StaffList?.filter((user: User) => {
         const searchFileds: (keyof User)[] = ['name', 'email', 'role'];
         // const searchFileds: (keyof typeof user)[] = ['name', 'email', 'role'];
 
@@ -31,9 +36,9 @@ function Staff() {
 
         return userStr.includes(searchText);
       })
-    : userList;
+    : StaffList;
 
-  const dataSource: StaffTableRecour[] = userListFilterd?.map(
+  const dataSource: StaffTableRecour[] = staffListFilterd?.map(
     (user: User): StaffTableRecour => {
       return {
         key: user._id,
@@ -59,9 +64,9 @@ function Staff() {
       ),
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
+      title: 'Role',
+      dataIndex: 'role',
+      key: 'role',
       render: index => (
         <Highlighter
           searchWords={[searchText]}
@@ -69,17 +74,12 @@ function Staff() {
           textToHighlight={index}
         />
       ),
+      // render: (role: string, record: StaffTableRecour) => (
+      //   <Role role={role} record={record} searchText={searchText} />
+      // ),
     },
     {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-      render: (role: string, record: StaffTableRecour) => (
-        <Role role={role} record={record} searchText={searchText} />
-      ),
-    },
-    {
-      title: '',
+      title: 'Actions',
       dataIndex: 'actions',
       key: 'actions',
       render: (_, record: StaffTableRecour) => <Actions record={record} />,
@@ -87,6 +87,17 @@ function Staff() {
   ];
   return (
     <div>
+      <div className="h-16 px-4 flex items-center justify-end gap-4">
+        <Button
+          type="primary"
+          size="large"
+          className="flex items-center capitalize"
+          icon={<UserAddOutlined />}
+          onClick={() => setIsDrawerUserOpen(true)}
+        >
+          Add user
+        </Button>
+      </div>
       <div className="p-4 bg-slate-200 flex items-center gap-4">
         {/* <BtnBack /> */}
         <Input
@@ -102,8 +113,9 @@ function Staff() {
         dataSource={dataSource}
         loading={userListLod}
         size="small"
-        pagination={{ pageSize: 12 }}
+        pagination={{ pageSize: 12, hideOnSinglePage: true }}
       />
+      <DrawerUser open={isDrawerUserOpen} setOpen={setIsDrawerUserOpen} />
     </div>
   );
 }

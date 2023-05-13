@@ -1,18 +1,21 @@
 interface SigninData {
-  email: string;
+  name: string;
   password: string;
 }
 interface RegisterData {
   name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+  role: string;
 }
 interface ForgetPassData {
-  email: string;
+  name: string;
 }
 interface resetPassData {
   code: string;
+  password: string;
+  passwordConfirm: string;
+}
+interface UpdatePassData {
+  currentPassword: string;
   password: string;
   passwordConfirm: string;
 }

@@ -8,9 +8,11 @@ import EnterEmail from 'pages/auth/EnterEmail';
 import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import ResetPassword from 'pages/auth/ResetPassword';
+import UpdatePassword from 'pages/auth/UpdatePassword';
 import Checkout from 'pages/Checkout/Checkout';
 import OrderDetails from 'pages/OrderDetails/OrderDetails';
 import Orders from 'pages/Orders/Orders';
+import OrdersSummary from 'pages/OrdersSummary/OrdersSummary';
 import { Navigate, useRoutes } from 'react-router-dom';
 import { useAppSelector } from 'services/store/configureStore';
 import Home from './pages/Home/Home';
@@ -36,42 +38,6 @@ function RoutesWrapper() {
           path: 'checkout',
           element: <Checkout />,
         },
-        {
-          path: 'orders',
-          children: [
-            {
-              index: true,
-              element: <Orders />,
-            },
-            {
-              path: ':orderId',
-              element: <OrderDetails />,
-            },
-          ],
-        },
-
-        // AUTHENTICATION
-        // {
-        //   path: '/auth',
-        //   children: [
-        //     {
-        //       index: true,
-        //       element: <Auth />,
-        //     },
-        //     {
-        //       path: 'enter-email',
-        //       element: <EnterEmail />,
-        //     },
-        //     {
-        //       path: 'enter-code',
-        //       element: <EnterCode />,
-        //     },
-        //     {
-        //       path: 'reset-password',
-        //       element: <ResetPassword />,
-        //     },
-        //   ],
-        // },
       ],
     },
     {
@@ -90,15 +56,41 @@ function RoutesWrapper() {
       path: '/reset-password',
       element: <ResetPassword />,
     },
+    {
+      path: '/update-password',
+      element: <UpdatePassword />,
+    },
 
     // ADMIN DASHBARD
     {
       path: 'dashboard',
-      element: <AdminLayout />,
+      element:
+        userData?.role === 'admin' ? (
+          <AdminLayout />
+        ) : (
+          <Navigate to="/login" replace />
+        ),
       children: [
         {
           index: true,
           element: <Dashboard />,
+        },
+        {
+          path: 'orders',
+          children: [
+            {
+              index: true,
+              element: <Orders />,
+            },
+            {
+              path: ':orderId',
+              element: <OrderDetails />,
+            },
+          ],
+        },
+        {
+          path: 'orders-summary',
+          element: <OrdersSummary />,
         },
         {
           path: 'stock',

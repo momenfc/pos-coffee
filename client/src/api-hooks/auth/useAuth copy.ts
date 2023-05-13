@@ -97,26 +97,7 @@ function useAuth() {
     return res;
   };
 
-  const updatePass = async (data: UpdatePassData, callback?: Callback) => {
-    const res = await fetchFun('/users/update-password', data);
-    if (res?.status === 'success') {
-      // tokenStorage.setToken(res.token);
-      // dispatch(setUserData(res.data.user));
-      message.success('Password updated succesfuly');
-      navigate('/');
-    }
-    return res;
-  };
-
-  return {
-    signin,
-    signOut,
-    register,
-    forgetPass,
-    resetPass,
-    updatePass,
-    authLoading,
-  };
+  return { signin, signOut, register, forgetPass, resetPass, authLoading };
 }
 
 export default useAuth;

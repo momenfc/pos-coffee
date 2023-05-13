@@ -1,6 +1,6 @@
 import { AppstoreAddOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import DrawerProduct from 'components/admin/DrawerProduct/DrawerProduct';
+import DrawerProduct from 'components/admin/Drawer/DrawerProduct';
 import ProductsWrapper from 'components/ProductsWrapper/ProductsWrapper';
 import { useState } from 'react';
 

@@ -1,11 +1,11 @@
 import { Button, Skeleton } from 'antd';
 import { getDateFormat, getTimeFormat, priceFormat } from 'utils';
-import logo from 'assets/images/logo.png';
 import { useAppDispatch, useAppSelector } from 'services/store/configureStore';
 import { useReactToPrint } from 'react-to-print';
 import { useEffect, useMemo, useRef } from 'react';
 import { generalDataUpdate } from 'services/store/reducers/generalData';
 import { cx } from '@emotion/css';
+import constants from 'consts';
 
 function InvoiceCopy({
   order,
@@ -73,8 +73,8 @@ function InvoiceCopy({
       >
         <div className="self-end">copy</div>
         <div className="flex flex-col items-center -mt-4">
-          <img src={logo} alt="POS" className="w-16" />
-          <span className="font-bold">نادي التجديف الرئيسي</span>
+          <img src={constants.logo} alt="POS" className="w-16" />
+          <span className="font-bold">{constants.branchName}</span>
         </div>
 
         <div className="w-full my-4 py-2 border-y border-dashed">

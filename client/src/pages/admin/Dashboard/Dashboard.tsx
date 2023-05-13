@@ -3,6 +3,11 @@ import { priceFormat } from 'utils';
 
 function Dashboard() {
   return (
+    <div className="w-full h-full flex justify-center items-center text-7xl">
+      Soon!
+    </div>
+  );
+  return (
     <div className="p-4 space-y-10">
       <div>
         <h4 className="text-2xl capitalize mb-4">Orders</h4>

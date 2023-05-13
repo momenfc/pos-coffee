@@ -12,7 +12,7 @@ import {
 import FormItem from 'antd/es/form/FormItem';
 import useProductDelete from 'api-hooks/product/useProductDelete';
 import placeholderImg from 'assets/images/placeholder.jpg';
-import DrawerProduct from 'components/admin/DrawerProduct/DrawerProduct';
+import DrawerProduct from 'components/admin/Drawer/DrawerProduct';
 import { useState } from 'react';
 import { useAppDispatch } from 'services/store/configureStore';
 import { addToCart } from 'services/store/reducers/cart';

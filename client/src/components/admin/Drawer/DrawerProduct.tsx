@@ -50,7 +50,7 @@ function DrawerProduct({ editProduct, open, setOpen }: DrawerProductProps) {
     if (editProduct) {
       form.setFieldsValue(editProduct);
     }
-  }, [editProduct, form]);
+  }, [editProduct, form, open]);
   return (
     <Drawer
       title={editProduct ? 'Edit product' : 'Add new product'}

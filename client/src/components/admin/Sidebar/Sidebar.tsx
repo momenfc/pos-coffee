@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
-
 import {
   DashboardOutlined,
-  DesktopOutlined,
-  FileOutlined,
+  DatabaseOutlined,
   GoldOutlined,
-  HomeOutlined,
-  PieChartOutlined,
   StockOutlined,
   TeamOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
 const { Sider } = Layout;
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -45,6 +39,7 @@ function Sidebar() {
 
   const items: MenuItem[] = [
     getItem('Dashboard', '/dashboard', <DashboardOutlined />),
+    getItem('Orders', 'orders', <DatabaseOutlined />),
     getItem('Stock', 'stock', <StockOutlined />),
     getItem('Products', 'products', <GoldOutlined />),
     getItem('Staff', 'staff', <TeamOutlined />),
