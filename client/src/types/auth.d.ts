@@ -16,6 +16,6 @@ interface resetPassData {
 }
 interface UpdatePassData {
   currentPassword: string;
-  password: string;
+  newPassword: string;
   passwordConfirm: string;
 }

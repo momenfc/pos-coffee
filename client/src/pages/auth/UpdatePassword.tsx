@@ -35,7 +35,7 @@ function UpdatePassword() {
           />
         </FormItem>
         <FormItem
-          name="password"
+          name="newPassword"
           rules={[
             {
               required: true,
@@ -57,7 +57,7 @@ function UpdatePassword() {
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
+                if (!value || getFieldValue('newPassword') === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(

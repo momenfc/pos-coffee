@@ -71,7 +71,7 @@ function ProductCard({ loading, product, editMood }: Props) {
               </div>
             )}
 
-            <div className="w-full px-1 font-medium truncate capitalize text-center bg-slate-100 bg-opacity-75">
+            <div className="w-full px-1  font-semibold line-clamp-1 text-base truncate capitalize text-center bg-slate-100 bg-opacity-75">
               {product?.name}
             </div>
           </div>
@@ -181,7 +181,7 @@ function ProductCard({ loading, product, editMood }: Props) {
               </div>
             )}
 
-            <div className="w-full px-1 font-medium truncate capitalize text-sm text-center bg-slate-100 bg-opacity-75">
+            <div className="w-full px-1 font-semibold line-clamp-1 truncate capitalize  text-center bg-slate-100 bg-opacity-75">
               {product?.name}
             </div>
           </div>
